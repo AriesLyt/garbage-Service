@@ -13,7 +13,8 @@ const uploadPic = ctx => {
   console.log('uploading %s -> %s', file.name, stream.path)
   console.log('http://192.168.14.55:10086' + stream.path.toString().split("assets")[1])
 
-  let url = 'http://192.168.14.55:10086' + stream.path.toString().split('assets')[1].replace('/\\/g', '/')
+  let url = 'http://119.45.242.136:10086' + stream.path.toString().split('assets')[1].replace('/\\/g', '/')
+  // let url = 'http://119.45.242.136:10086' + stream.path.toString().split('assets')[1].replace('/\\/g', '/')
   ctx.body = url
 }
 
@@ -31,7 +32,18 @@ const selectPic = async ctx => {
   const { name } = ctx.request.body
   if(name === "1"){
     const res = await PicOneDao.selectPicOne()
-    console.log(res);
+    if(res){
+      let picList = res.map((it) => {
+        return {
+          id: it.id,
+          url: it.pic_url
+        }
+      })
+      ctx.body = {
+        code: 0, 
+        data: picList
+      }
+    }
   }
 }
 

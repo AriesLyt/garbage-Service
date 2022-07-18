@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize')
 const seq = require('../db')
 
 //showshowway
-const PicOneModel = seq.define('PicOneData', {
+const PicOneModel = seq.define('piconedata', {
   pic_url: {
     type: DataTypes.CHAR(128),
     allowNull: false,

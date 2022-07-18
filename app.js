@@ -34,4 +34,6 @@ app.use(require('koa-static')(__dirname + '/assets'))
 
 app.use(router.routes(), router.allowedMethods());
 
-app.listen(10086);
+app.listen(10086, function(){
+  console.log(10086)
+});
